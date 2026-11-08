@@ -1,0 +1,19 @@
+seed: 42
+n_clients: 400
+n_loans: 500
+period_start: 2023-01-01
+period_end: 2025-12-31
+products:
+  consumer: {share: 0.60, amount: [50000, 600000],    term: [12, 60], rate: [0.18, 0.32], base_pd: 0.07, collateral: none}
+  auto:     {share: 0.25, amount: [300000, 2500000],  term: [24, 84], rate: [0.12, 0.20], base_pd: 0.035, collateral: vehicle}
+  sme:      {share: 0.15, amount: [500000, 15000000], term: [12, 60], rate: [0.14, 0.24], base_pd: 0.05, collateral: property}
+channels: {branch: 0.55, online: 0.30, partner: 0.15}
+online_pd_multiplier: 1.4
+bad_vintage: {from: '2024-03', to: '2024-09', pd_multiplier: 1.8}
+usd_share: 0.15
+restructure_share: 0.025
+roll:
+  p_miss_base: 0.008          # базовая вероятность пропустить платёж из корзины 0
+  cure_from_1: 0.55        # из 1 пропуска — погасить всё
+  cure_from_2plus: 0.25
+  pay_current_only: 0.30   # платит только текущий — остаётся в корзине
